@@ -20,6 +20,12 @@ runs:
   using: 'composite'
   steps:
     -
+      id: setup-path
+      shell: bash
+      run: |-
+        echo "path=$HOME/.tbls/bin" >> $GITHUB_OUTPUT
+        echo "$HOME/.tbls/bin" >> "$GITHUB_PATH"
+    -
       uses: k1LoW/gh-setup@v1
       with:
         repo: github.com/k1LoW/tbls
@@ -28,3 +34,4 @@ runs:
         bin-match: tbls
         strict: true
         force: ${{ inputs.force }}
+        bin-dir: ${{ setup-path.outputs.path }}
