@@ -35,3 +35,7 @@ runs:
         strict: true
         force: ${{ inputs.force }}
         bin-dir: ${{ steps.setup-path.outputs.path }}
+    -
+      shell: bash
+      run: |
+        ls "$HOME/.tbls/bin" >> "$GITHUB_PATH"
