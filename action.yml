@@ -39,4 +39,4 @@ runs:
     -
       shell: bash
       run: |
-        ls "$HOME/.tbls/bin" >> "$GITHUB_PATH"
+        ls "$HOME/.tbls/bin"
