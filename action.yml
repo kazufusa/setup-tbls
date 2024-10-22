@@ -33,6 +33,7 @@ runs:
       run: |
         mkdir -p ${{ steps.setup-path.outputs.path }}
     -
+      shell: bash
       run: echo "${{ steps.setup-path.outputs.path }}" >> $GITHUB_PATH
 
     -
