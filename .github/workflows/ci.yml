@@ -23,6 +23,7 @@ jobs:
         uses: ./
       -
         run: echo $PATH
+        shell: bash
       -
         name: Run tbls
         run: tbls version
