@@ -39,10 +39,10 @@ runs:
     -
       name: Log PATH for debugging (Windows)
       if: runner.os == 'Windows'
-      run: echo $env:PATH
+      run: |
+        echo $env:PATH
+        tbls version
       shell: powershell
-    -
-      run: tbls version
     -
       run: echo $PATH
       shell: bash
