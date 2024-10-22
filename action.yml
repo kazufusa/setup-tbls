@@ -22,10 +22,19 @@ runs:
     -
       id: setup-path
       shell: bash
-      run: |-
-        echo "path=$HOME/.tbls/bin" >> $GITHUB_OUTPUT
-        echo "$HOME/.tbls/bin" >> "$GITHUB_PATH"
-        mkdir -p $HOME/.tbls/bin
+      run: |
+        if [[ "$RUNNER_OS" == "Linux" || "$RUNNER_OS" == "macOS" ]]; then
+          echo "path=$HOME/.ppp/bin" >> $GITHUB_OUTPUT
+        elif [[ "$RUNNER_OS" == "Windows" ]]; then
+          echo "path=$env:USERPROFILE\\.tbls\\bin" >> $GITHUB_OUTPUT
+        fi
+    -
+      shell: bash
+      run: |
+        mkdir -p ${{ steps.setup-path.outputs.path }}
+    -
+      run: echo "${{ steps.setup-path.outputs.path }}" >> $GITHUB_PATH
+
     -
       uses: k1LoW/gh-setup@v1
       with:
