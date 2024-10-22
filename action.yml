@@ -40,3 +40,4 @@ runs:
       shell: bash
       run: |
         ls "$HOME/.tbls/bin"
+        echo $PATH
