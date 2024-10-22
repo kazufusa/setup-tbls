@@ -34,4 +34,4 @@ runs:
         bin-match: tbls
         strict: true
         force: ${{ inputs.force }}
-        bin-dir: ${{ setup-path.outputs.path }}
+        bin-dir: ${{ steps.setup-path.outputs.path }}
