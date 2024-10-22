@@ -37,7 +37,17 @@ runs:
         force: ${{ inputs.force }}
         bin-dir: ${{ steps.setup-path.outputs.path }}
     -
+      name: Log PATH for debugging (Linux/macOS)
+      if: runner.os != 'Windows'
+      run: echo $PATH
       shell: bash
+
+    -
+      name: Log PATH for debugging (Windows)
+      if: runner.os == 'Windows'
+      run: echo $env:PATH
+      shell: powershell
+    -
       run: tbls version
     -
       run: echo $PATH
