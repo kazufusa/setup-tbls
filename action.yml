@@ -25,6 +25,7 @@ runs:
       run: |-
         echo "path=$HOME/.tbls/bin" >> $GITHUB_OUTPUT
         echo "$HOME/.tbls/bin" >> "$GITHUB_PATH"
+        mkdir -p $HOME/.tbls/bin
     -
       uses: k1LoW/gh-setup@v1
       with:
