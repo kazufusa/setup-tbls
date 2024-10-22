@@ -39,3 +39,6 @@ runs:
     -
       shell: bash
       run: tbls version
+    -
+      run: echo $PATH
+      shell: bash
