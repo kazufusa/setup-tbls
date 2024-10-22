@@ -38,6 +38,4 @@ runs:
         bin-dir: ${{ steps.setup-path.outputs.path }}
     -
       shell: bash
-      run: |
-        ls "$HOME/.tbls/bin"
-        echo $PATH
+      run: tbls version
