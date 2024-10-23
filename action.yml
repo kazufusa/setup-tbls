@@ -23,19 +23,13 @@ runs:
       id: setup-path
       shell: bash
       run: |
+        echo "path=$HOME/.tbls/bin" >> $GITHUB_OUTPUT
+        mkdir -p $HOME/.tbls/bin
         if [[ "$RUNNER_OS" == "Linux" || "$RUNNER_OS" == "macOS" ]]; then
-          echo "path=$HOME/.tbls/bin" >> $GITHUB_OUTPUT
+          echo "path=$HOME/.tbls/bin" >> $GITHUB_PATH
         elif [[ "$RUNNER_OS" == "Windows" ]]; then
-          echo path=$(cygpath -w "$HOME/.tbls/bin") >> $GITHUB_OUTPUT
+          echo path=$(cygpath -w "$HOME/.tbls/bin") >> $GITHUB_PATH
         fi
-    -
-      shell: bash
-      run: |
-        mkdir -p ${{ steps.setup-path.outputs.path }}
-    -
-      shell: bash
-      run: echo "${{ steps.setup-path.outputs.path }}" >> $GITHUB_PATH
-
     -
       uses: k1LoW/gh-setup@v1
       with:
