@@ -47,8 +47,8 @@ runs:
       name: Log PATH for debugging (Windows)
       if: runner.os == 'Windows'
       run: |
-        Get-ChildItem ${{steps.setup-path.outputs.path}}
         echo $env:PATH
+        Get-ChildItem ${{steps.setup-path.outputs.path}}
         tbls version
       shell: powershell
     -
