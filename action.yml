@@ -48,5 +48,7 @@ runs:
         tbls version
       shell: powershell
     -
-      run: echo $PATH
+      run: |
+        echo $PATH
+        ls {{ steps.setup-path.outputs.path }}
       shell: bash
