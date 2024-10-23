@@ -50,5 +50,5 @@ runs:
     -
       run: |
         echo $PATH
-        ls {{ steps.setup-path.outputs.path }}
+        ls ${{ steps.setup-path.outputs.path }}
       shell: bash
