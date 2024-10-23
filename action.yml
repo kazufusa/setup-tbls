@@ -26,6 +26,7 @@ runs:
         if [[ "$RUNNER_OS" == "Linux" || "$RUNNER_OS" == "macOS" ]]; then
           echo "path=$HOME/.ppp/bin" >> $GITHUB_OUTPUT
         elif [[ "$RUNNER_OS" == "Windows" ]]; then
+          echo "path=$env:USERPROFILE\\.tbls\\bin"
           echo "path=$env:USERPROFILE\\.tbls\\bin" >> $GITHUB_OUTPUT
         fi
     -
