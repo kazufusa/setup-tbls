@@ -23,12 +23,15 @@ runs:
       id: setup-path
       shell: bash
       run: |
-        echo "path=$HOME/.tbls/bin" >> $GITHUB_OUTPUT
+        if [[ "$RUNNER_OS" == "Linux" || "$RUNNER_OS" == "macOS" ]]; then
+          echo "path=$HOME/.tbls/bin" >> $GITHUB_OUTPUT
+        elif [[ "$RUNNER_OS" == "Windows" ]]; then
+          echo path=$(cygpath -w "$HOME/.tbls/bin") >> $GITHUB_OUTPUT
+        fi
     -
       shell: bash
       run: |
         mkdir -p ${{ steps.setup-path.outputs.path }}
-        echo ${{ steps.setup-path.outputs.path }}
     -
       shell: bash
       run: echo "${{ steps.setup-path.outputs.path }}" >> $GITHUB_PATH
@@ -48,7 +51,6 @@ runs:
       if: runner.os == 'Windows'
       run: |
         echo $env:PATH
-        Get-ChildItem ${{steps.setup-path.outputs.path}}
         tbls version
       shell: powershell
     -
